@@ -1,0 +1,113 @@
+<div class="container" style="padding-top: 40px;">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 style="font-family: 'Courier New', Courier, monospace;">Reserve Now</h1>
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+                <div class="row">
+                    <div class="col-md-6">
+                        
+                        <div class="input-group">
+                            <input class="form-control" id="customerName"  type="text" name="customerName" [(ngModel)]="customerName" 
+                            required
+                            #customerNameControl="ngModel" placeholder="Name" aria-label="default input example">
+                          
+
+                            <div class="input-group-text">
+                                <i class="fas fa-pen"></i>
+                            </div>
+
+                          </div>
+                          <span class="text text-danger" *ngIf="customerNameControl.invalid && customerNameControl.touched">
+                              CustomerName isRequired
+                            
+                            </span>       
+                         </div>
+                    <div class="col-md-6">
+
+                        <div class="input-group">
+                            <input class="form-control" type="text" required id="customerPhone"
+                             name = "customerPhone" [(ngModel)]="customerPhone"
+                             #customerPhoneControl="ngModel"
+                             placeholder="Phone" aria-label="default input example">
+
+                            <div class="input-group-text">
+                                <i class="fas fa-phone-alt"></i> 
+                           </div>
+                        </div>
+                        <span class="text text-danger" *ngIf="customerPhoneControl.invalid && customerPhoneControl.touched">
+                            Customer Phone isRequired
+                          
+                          </span> 
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input class="form-control"  required
+                            id="customerEmail" name="customerEmail"
+                            [(ngModel)]="customerEmail"
+                            #customerEmailControl="ngModel"
+                             type="text" placeholder="Email" aria-label="default input example">
+                        <div class="input-group-text">
+                            <i class="fad fa-envelope"></i>
+                        </div>
+
+                    </div>
+                    <span class="text text-danger" *ngIf="customerEmailControl.invalid && customerEmailControl.touched">
+                        Customer Address isRequired
+                      
+                      </span> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input class="form-control" type="text" 
+                            required
+                            id="customerAddress" name="customerAddress"
+                            [(ngModel)]="customerAddress"
+                            #customerAddressControl="ngModel"
+                            placeholder="Address" aria-label="default input example">
+
+                            <div class="input-group-text">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                        </div>
+
+                        <span class="text text-danger" *ngIf="customerAddressControl.invalid && customerAddressControl.touched">
+                            Customer Address isRequired
+                          
+                          </span> 
+    
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a class="btn mybtn"(click)="BackMethod()">Back</a>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <button type="submit" [disabled]="loginForm.invalid" style="margin-left: 180px;" class="btn mybtn">Confirm</button>
+                    </div>
+                </div>
+
+
+               
+            </form>
+        </div>
+    
+        
+        <div class="col-md-6" style="border-color: red;">
+            <div class="card" style="max-width: 500px;">
+                    <img src= "{{baseUrl+''+product.pictureUrl}}"  style="height: 200px;" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title" style="font-family: ' Edu VIC WA NT Beginner ';">{{product.name}}</h5>
+                  <p class="card-text">{{product.description}}</p>
+                  <a  class="btn mybtn">{{product.price}}$</a>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+    
+</div>

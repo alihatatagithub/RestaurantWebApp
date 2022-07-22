@@ -1,0 +1,88 @@
+<div class="container"><h4>Your Data</h4>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <i class="fal fa-user"></i>
+            <span> Name</span> <br>
+            {{name}}
+        </div>
+    
+        <div class="col-md-3">
+            <i class="far fa-phone-alt"></i>
+            <span> Phone</span> <br>
+            {{phone}}
+        </div>
+    
+        <div class="col-md-3">
+            <i class="far fa-envelope"></i>
+            <span> Email</span> <br>
+            {{email}}
+        </div>
+    
+        <div class="col-md-3">
+            <i class="fas fa-map-marker-alt"></i>
+            <span> Address</span> <br>
+            {{address}}
+        </div>
+    </div>
+
+
+  
+
+    
+</div>
+
+<br>
+<br>
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="row"></th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of products">
+            <th scope="row">
+              <img src="{{baseUrl+''+item.pictureUrl}}" width="200" height="150">
+            </th>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>
+              <button (click)="Add(item.price)">+</button> <input type="text" disabled> <button (click)="Sub(item.price)">-</button>
+            </td>
+            <td>
+              <input name="total" [(ngModel)]="total" class="form-control" disabled>
+            </td>
+            <td></td>
+          </tr>
+         
+        </tbody>
+      </table>
+
+      <table class="table ">
+        <thead>
+          <tr>
+            <th>Total</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SubTotal</td>
+          </tr>
+          <tr>
+            <td>SubTotal</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button (click)="ConfirmOrder()" class="btn mybtn">Confirm</button>
+
+</div>

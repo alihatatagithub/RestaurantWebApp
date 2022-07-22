@@ -1,0 +1,57 @@
+﻿[
+  {
+    "Name": "McDonald's",
+    "Description": "Full menu; Bundle Meals & Promotions; Beef; Chicken & Fish; Sides; Beverages; Happy Meal; Desserts; Breakfast Menu; McCafé",
+    "CityId": 1,
+    "PictureUrl": "images/restaurants/1.jpg"
+
+  },
+  {
+    "Name": "My Broast",
+    "Description": "Restaurant2 Desc Restaurant2 Desc Restaurant2 Desc Restaurant2 Desc ",
+    "CityId": 1,
+    "PictureUrl": "images/restaurants/2.jpg"
+
+  },
+  {
+    "Name": "See Food Restaurant",
+    "Description": "Restaurant3 Desc Restaurant1 Desc Restaurant1 Desc Restaurant1 Desc ",
+    "CityId": 1,
+    "PictureUrl": "images/restaurants/3.jpg"
+
+  },
+  {
+    "Name": "Kentaky",
+    "Description": "Restaurant4 Desc Restaurant2 Desc Restaurant2 Desc Restaurant2 Desc ",
+    "CityId": 1,
+    "PictureUrl": "images/restaurants/4.jpg"
+
+  },
+  {
+    "Name": "Restaurant5",
+    "Description": "Restaurant1 Desc Restaurant1 Desc Restaurant1 Desc Restaurant1 Desc ",
+    "CityId": 1,
+    "PictureUrl": "images/products/hat-react2.png"
+
+  },
+  {
+    "Name": "Restaurant6",
+    "Description": "Restaurant2 Desc Restaurant2 Desc Restaurant2 Desc Restaurant2 Desc ",
+    "CityId": 2,
+    "PictureUrl": "images/products/hat-react2.png"
+
+  },
+  {
+    "Name": "Restaurant7",
+    "Description": "Restaurant3 Desc Restaurant1 Desc Restaurant1 Desc Restaurant1 Desc ",
+    "CityId": 3,
+    "PictureUrl": "images/products/hat-react2.png"
+  },
+  {
+    "Name": "Restaurant8",
+    "Description": "Restaurant4 Desc Restaurant2 Desc Restaurant2 Desc Restaurant2 Desc ",
+    "CityId": 4,
+    "PictureUrl": "images/products/hat-react2.png"
+
+  }
+]
