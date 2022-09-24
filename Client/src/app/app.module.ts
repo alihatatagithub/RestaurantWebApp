@@ -9,14 +9,23 @@ import { RestaurantComponent } from './Restaurant/restaurant.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerReserveComponent } from './Customer/customer-reserve.component';
 import { OrderComponent } from './Order/order.component';
+import { LoginComponent } from './login/login.component';
+import { ProductsComponent } from './product/product.component';
+import { AuthGuard } from './guards/auth-guard.service';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+  return localStorage.getItem("jwt");
+}
 @NgModule({
   declarations: [
     AppComponent,
     RestaurantdetailComponent,
     RestaurantComponent,
     CustomerReserveComponent,
-    OrderComponent
+    OrderComponent,
+    LoginComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -24,10 +33,16 @@ import { OrderComponent } from './Order/order.component';
     HttpClientModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:44382"],
+        disallowedRoutes: []
+      }
+  }),    
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
