@@ -2,14 +2,14 @@
     <div class="row">
         <div class="col-md-6">
             <h1 style="font-family: 'Courier New', Courier, monospace;">Reserve Now</h1>
-            <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+            <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col-md-6">
                         
                         <div class="input-group">
-                            <input class="form-control" id="customerName"  type="text" name="customerName" [(ngModel)]="customerName" 
-                            required
-                            #customerNameControl="ngModel" placeholder="Name" aria-label="default input example">
+                            <input class="form-control" id="Name"  type="text" name="Name" formControlName="Name"
+                            
+                           placeholder="Name" aria-label="default input example">
                           
 
                             <div class="input-group-text">
@@ -17,55 +17,53 @@
                             </div>
 
                           </div>
-                          <span class="text text-danger" *ngIf="customerNameControl.invalid && customerNameControl.touched">
-                              CustomerName isRequired
+                          <span class="text text-danger" *ngIf="customerForm.controls['Name'].invalid && (customerForm.controls['Name'].dirty || customerForm.controls['Name'].touched)">
+                              Name is Required
                             
                             </span>       
                          </div>
                     <div class="col-md-6">
 
                         <div class="input-group">
-                            <input class="form-control" type="text" required id="customerPhone"
-                             name = "customerPhone" [(ngModel)]="customerPhone"
-                             #customerPhoneControl="ngModel"
+                            <input class="form-control" type="text" [pattern]="phonePattern" id="Phone"
+                             name = "Phone" formControlName="Phone"
+                            
                              placeholder="Phone" aria-label="default input example">
 
                             <div class="input-group-text">
                                 <i class="fas fa-phone-alt"></i> 
                            </div>
                         </div>
-                        <span class="text text-danger" *ngIf="customerPhoneControl.invalid && customerPhoneControl.touched">
-                            Customer Phone isRequired
+                        <span class="text text-danger" *ngIf="customerForm.controls['Phone'].invalid && (customerForm.controls['Phone'].dirty || customerForm.controls['Phone'].touched)">
+                            Invalid Phone 
                           
                           </span> 
                     </div>
                 </div>
                 <br>
+              
                 <div class="row">
                     <div class="col-md-6">
                         <div class="input-group">
-                            <input class="form-control"  required
-                            id="customerEmail" name="customerEmail"
-                            [(ngModel)]="customerEmail"
-                            #customerEmailControl="ngModel"
+                            <input class="form-control" 
+                            id="Email" name="Email"
+                            formControlName="Email"
                              type="text" placeholder="Email" aria-label="default input example">
                         <div class="input-group-text">
                             <i class="fad fa-envelope"></i>
                         </div>
 
                     </div>
-                    <span class="text text-danger" *ngIf="customerEmailControl.invalid && customerEmailControl.touched">
-                        Customer Address isRequired
+                    <span class="text text-danger" *ngIf="customerForm.controls['Email'].invalid && (customerForm.controls['Email'].dirty || customerForm.controls['Email'].touched)">
+                        InValid Email
                       
                       </span> 
                     </div>
                     <div class="col-md-6">
                         <div class="input-group">
                             <input class="form-control" type="text" 
-                            required
-                            id="customerAddress" name="customerAddress"
-                            [(ngModel)]="customerAddress"
-                            #customerAddressControl="ngModel"
+                            id="Address" name="Address"
+                           formControlName="Address"
                             placeholder="Address" aria-label="default input example">
 
                             <div class="input-group-text">
@@ -73,8 +71,8 @@
                             </div>
                         </div>
 
-                        <span class="text text-danger" *ngIf="customerAddressControl.invalid && customerAddressControl.touched">
-                            Customer Address isRequired
+                        <span class="text text-danger" *ngIf="customerForm.controls['Address'].invalid && (customerForm.controls['Address'].dirty || customerForm.controls['Address'].touched)">
+                             Address isRequired
                           
                           </span> 
     
@@ -87,15 +85,13 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <button type="submit" [disabled]="loginForm.invalid" style="margin-left: 180px;" class="btn mybtn">Confirm</button>
+                        <button type="submit" [disabled]="customerForm.invalid" style="margin-left: 180px;" class="btn mybtn">Confirm</button>
                     </div>
                 </div>
-
 
                
             </form>
         </div>
-    
         
         <div class="col-md-6" style="border-color: red;">
             <div class="card" style="max-width: 500px;">
@@ -103,7 +99,7 @@
                 <div class="card-body">
                   <h5 class="card-title" style="font-family: ' Edu VIC WA NT Beginner ';">{{product.name}}</h5>
                   <p class="card-text">{{product.description}}</p>
-                  <a  class="btn mybtn">{{product.price}}$</a>
+                  <a style="cursor:default;" disabled class="btn mybtn">{{product.price}}$</a>
                 </div>
               </div>
         </div>

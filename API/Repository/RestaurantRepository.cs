@@ -35,7 +35,22 @@ namespace API.Repository
 
         public async Task<IReadOnlyList<Restaurant>> GetRestaurantByCityIdAsync(int cityId, string searchName)
         {
-            return await _context.Restaurants.Where(a => a.CityId == cityId || a.Name.Contains(searchName)).ToListAsync();
+            if (cityId == 0)
+            {
+                return await _context.Restaurants.Where(a => a.Name.Contains(searchName)).ToListAsync();
+
+            }
+
+            if (string.IsNullOrEmpty(searchName) || string.IsNullOrEmpty(searchName))
+            {
+                return await _context.Restaurants.Where(a => a.CityId == cityId ).ToListAsync();
+
+            }
+
+            return await _context.Restaurants.Where(a => a.CityId == cityId && a.Name.Contains(searchName)).ToListAsync();
+
+
+
         }
 
         public async Task<Restaurant> GetRestaurantByIdAsync(int id)

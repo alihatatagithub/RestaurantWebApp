@@ -1,8 +1,10 @@
 ﻿using API.Data;
+using API.DTOS;
 using API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 
 namespace API.Controllers
 {
@@ -16,36 +18,38 @@ namespace API.Controllers
             _Context = Context;
         }
         [HttpPost]
-        public ActionResult ConfirmOrder(int[] a,string name,string email,string phone,string address)
+        public IActionResult ConfirmOrder(OrderDto orderDto)
         {
             Customer customer = new Customer
             {
-                Email = email,
-                Address = address,
-                Name = name,
-                Phone = phone,
+                Email = orderDto.Email,
+                Address = orderDto.Address,
+                Name = orderDto.Name,
+                Phone = orderDto.Phone,
             };
-            _Context.Customers.Add(customer);
-
+             _Context.Customers.Add(customer);
+            _Context.SaveChanges();
             Order order = new Order
             {
-                CreatedDate = DateTime.UtcNow,
-                CreatedBy = customer.Name,
+                CreatedDate = DateTime.Now,
+                CreatedBy = orderDto.Name,
             };
-            _Context.Orders.Add(order);
-            _Context.SaveChanges();
-            for (int i = 0; i < a.Length; i++)
+             _Context.Orders.Add(order);
+             _Context.SaveChanges();
+            foreach (var item in orderDto.ProductIds)
             {
+
+
                 OrderDetail orderDetail = new OrderDetail();
-                orderDetail.ProductId = a[i];
+                orderDetail.ProductId = item;
                 orderDetail.CreatedDate = DateTime.UtcNow;
                 orderDetail.Qty = 1;
                 orderDetail.CustomerId = customer.Id;
                 orderDetail.OrderId = order.Id;
                 _Context.OrderDetails.Add(orderDetail);
             }
-            _Context.SaveChanges();
-            return Ok(order);
+             _Context.SaveChanges();
+            return Ok();
         }
     }
 }

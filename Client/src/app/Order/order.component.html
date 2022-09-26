@@ -48,19 +48,37 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of products">
+          <tr *ngFor="let item of products" >
             <th scope="row">
               <img src="{{baseUrl+''+item.pictureUrl}}" width="200" height="150">
             </th>
             <td>{{item.name}}</td>
             <td>{{item.price}}</td>
             <td>
-              <button (click)="Add(item.price)">+</button> <input type="text" disabled> <button (click)="Sub(item.price)">-</button>
+              <p *ngIf="item.Qty >1 ;then enableMinus;else disableMinus"></p>
+              <ng-template #enableMinus>
+                <span>
+                  <button class="btn addOrEditBtn"  (click)="Sub(item.id)">-</button>
+                </span>
+              </ng-template>
+
+              <ng-template #disableMinus>
+                <span>
+                  <button class="btn addOrEditBtn" disabled (click)="Sub(item.id)">-</button>
+                </span>
+              </ng-template>
+              
+              <input id="Qty" [value]="item.Qty" name="Qty" type="text" disabled> 
+              <span>
+                <button class="btn addOrEditBtn" (click)="Add(item.id)">+</button> 
+              </span>
             </td>
             <td>
-              <input name="total" [(ngModel)]="total" class="form-control" disabled>
+              <input name="total" [(ngModel)]="total[item.id]" class="form-control" disabled>
             </td>
-            <td></td>
+            <td>
+              <button (click)="Delete(item.id)" class="btn btn-danger">Delete</button>
+            </td>
           </tr>
          
         </tbody>
@@ -75,14 +93,20 @@
         </thead>
         <tbody>
           <tr>
-            <td>SubTotal</td>
-          </tr>
-          <tr>
-            <td>SubTotal</td>
+            <td>{{allTotal}}</td>
           </tr>
         </tbody>
       </table>
 
-      <button (click)="ConfirmOrder()" class="btn mybtn">Confirm</button>
+
+</div>
+
+
+<div style="text-align:center" *ngIf="products.length > 0" >
+
+  <button class="btn btn-default" (click)="BackMethod()" style="margin-left:30px" >Back</button>
+
+  <button (click)="ConfirmOrder()" class="btn mybtn">Confirm</button>
+
 
 </div>

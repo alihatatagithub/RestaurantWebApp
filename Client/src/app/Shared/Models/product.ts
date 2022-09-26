@@ -4,5 +4,7 @@ export interface IProduct{
       description:string;
       price:number;
       pictureUrl:string;
+      isActive:boolean;
+      Qty:number;
 
 }

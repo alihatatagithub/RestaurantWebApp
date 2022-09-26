@@ -2,3 +2,7 @@
     background-color: #f1b500;
      color: black;
 }
+
+#checked:hover{
+    cursor: pointer;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MenueApiService } from '../Menu/menue-api.service';
@@ -15,43 +15,57 @@ import { CustomerService } from './customer.service';
 export class CustomerReserveComponent implements OnInit {
 
   // productsIds: number []= this.restaurantService.productsIds;
-  product:IProduct = {id:0,name:'',description:'',price:0,pictureUrl:''};
+  product:any;
   baseUrl :string = environment.BaseUrl;
-  customerName:string = '';
-  customerEmail:string = '';
-  customerAddress:string = '';
-  customerPhone:string = '';
+  productIds:number[] = [];
+  phonePattern:any;
+  customerForm:any;
+  products:IProduct[] = [];
+  // productId:number =0;
 
-  newCustomer = {name:this.customerName,email:this.customerEmail,address:this.customerAddress,phone:this.customerPhone}
-  productId:number =0;
-
-  constructor(private rmenueService:MenueApiService,
+  constructor(private formbulider: FormBuilder,
+              private rmenueService:MenueApiService,
               private customerService:CustomerService,
               private router:Router,
                private _router:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.productId = +this._router.snapshot.params['id'];
+    // this.productId = +this._router.snapshot.params['id'];
 
+    localStorage.getItem('product_ids')?.split(',').forEach(element => {
+
+      this.productIds.push(parseInt(element));
+      this.rmenueService.GetProductById(parseInt(element)).subscribe((a:any) => {
+  
+        this.product = {id:a.id,name:a.name,description:a.description,price:a.price,pictureUrl:a.pictureUrl,Qty :1};
+        this.products.push(this.product);
+  
+      },error =>{
+        console.log("Error"+error);
+      });
+    });
     console.log(localStorage.getItem('product_ids'))
     
-     this.rmenueService.GetProductById(this.productId).subscribe((a:any)=>{
-      this.product = a;
-    },error=>{
-      console.log("error"+error);
-    })
+
+    this.phonePattern = "^[0-9]{8,15}$";
+    this.customerForm = this.formbulider.group({
+      Name: [localStorage.getItem('name'), [Validators.required]],
+      Phone: [localStorage.getItem('phone'),[Validators.required,Validators.pattern(this.phonePattern)]],
+      Email: [localStorage.getItem('email'), [Validators.required,Validators.email]],
+      Address: [localStorage.getItem('address'), [Validators.required]],
+    
+    });
     
   }
 
-  onSubmit(loginForm:NgForm){
-    if (loginForm.valid) {
-      // this.customerService.CreateCustomer(this.newCustomer);
-      localStorage.setItem('email',this.customerEmail)
-      localStorage.setItem('name',this.customerName)
-      localStorage.setItem('phone',this.customerPhone)
-      localStorage.setItem('address',this.customerAddress)
+  onSubmit(){
+   
+    localStorage.setItem('name',this.customerForm.get('Name').value);
+    localStorage.setItem('phone',this.customerForm.get('Phone').value);
+
+      localStorage.setItem('email',this.customerForm.get('Email').value)
+      localStorage.setItem('address',this.customerForm.get('Address').value)
       this.router.navigateByUrl('order');
-    }
     
    
   }

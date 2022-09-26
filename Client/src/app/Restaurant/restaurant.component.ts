@@ -32,19 +32,17 @@ export class RestaurantComponent implements OnInit {
                private cityService:CityApiService ,
                private router:Router){
 
+                  this.restaurantService.GetRestaurantByCityId(0,'').subscribe((res:any )=> {
+                    this.restaurants = res;
+                    console.log(res)
+                  },error =>{
+                    console.log(error);
+                  })
 
-    this.GetRestaurants(this.cityId);
     this.GetCities();
   }
 
-  GetRestaurants(id:number){
-    this.restaurantService.GetRestaurantByCityId(id,'').subscribe((res:any )=> {
-      this.restaurants = res;
-      console.log(res)
-    },error =>{
-      console.log(error);
-    })
-  }
+
 
   GetCities(){
     this.cityService.GetCities().subscribe((res:any )=> {
@@ -57,14 +55,12 @@ export class RestaurantComponent implements OnInit {
 
   onSubmit(form:NgForm){
    
-    if (form.valid) {
       this.restaurantService.GetRestaurantByCityId(this.cityId,this.restaurantName).subscribe((res:any )=> {
         this.restaurants = res;
         console.log(res)
       },error =>{
         console.log(error);
       })
-    }
   }
 
 

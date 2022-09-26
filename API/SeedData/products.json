@@ -4,28 +4,28 @@
     "Description": "Berger Mac Berger Mac Berger Mac ",
     "Price": 100,
     "PictureUrl": "images/menue/mac/berger.jpg",
-    "RestaurantId": 1002
+    "RestaurantId": 1
   },
   {
     "Name": "Big mac",
     "Description": "Big mac Big mac Big mac Big mac Big mac Big mac ",
     "Price": 150,
     "PictureUrl": "images/menue/mac/bigmac.jpg",
-    "RestaurantId": 1002
+    "RestaurantId": 1
   },
   {
     "Name": "Combo Mac ",
     "Description": "Combo Mac Combo Mac Combo Mac Combo Mac Combo Mac ",
     "Price": 180,
     "PictureUrl": "images/menue/mac/combo.jpg",
-    "RestaurantId": 1002
+    "RestaurantId": 1
   },
   {
     "Name": "Stripts Checken Mac",
     "Description": "Stripts Checken Mac Stripts Checken Mac Stripts Checken Mac Stripts Checken Mac ",
     "Price": 300,
     "PictureUrl": "images/menue/mac/stripts",
-    "RestaurantId": 1002
+    "RestaurantId": 1
   },
 
   {
@@ -33,27 +33,27 @@
     "Description": "My Broast Restaurant My Broast Restaurant My Broast Restaurant My Broast Restaurant",
     "Price": 15,
     "PictureUrl": "images/menue/broast/11.jpg",
-    "RestaurantId": 1003
+    "RestaurantId": 2
   },
   {
     "Name": "My Broast Checken",
     "Description": "My Broast Checken My Broast Checken My Broast Checken My Broast Checken",
     "Price": 15,
     "PictureUrl": "images/menue/broast/22.jpg",
-    "RestaurantId": 1003
+    "RestaurantId": 2
   },
   {
     "Name": "My See Food ",
     "Description": "My Broast Restaurant My Broast Restaurant My Broast Restaurant My Broast Restaurant",
     "Price": 500,
     "PictureUrl": "images/menue/seefood/33.jpg",
-    "RestaurantId": 1004
+    "RestaurantId": 3
   },
   {
     "Name": "See Food  ",
     "Description": "See Food See Food See Food See Food  ",
     "Price": 700,
     "PictureUrl": "images/menue/seefood/44.jpg",
-    "RestaurantId": 1004
+    "RestaurantId": 3
   }
 ]

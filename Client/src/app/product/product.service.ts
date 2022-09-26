@@ -9,7 +9,7 @@ import { IProduct } from '../Shared/Models/product';
 })
 export class ProductService {
 
-  url = environment.BaseUrl + 'api/product/';
+  url = environment.BaseUrl + 'api/products/';
   constructor(private http: HttpClient) { }
   getProductList(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.url);

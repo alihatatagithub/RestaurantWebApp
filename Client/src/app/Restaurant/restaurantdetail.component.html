@@ -1,31 +1,61 @@
+<div *ngIf="products.length > 0 ;then ProductFound;else noProductFound">
+</div>
+<ng-template #ProductFound>
+  <form #resform="ngForm" (ngSubmit)="OnSub()">
 
 
-<form #resform="ngForm" (ngSubmit)="OnSub()">
-       
-  <div class="container">
-    <div class="row">
-      <div class="card mb-3" style="max-width: 540px;" *ngFor="let item of products">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+
+          <a [routerLink]="['/restaurants']" class="btn mybtn d-inline">Back</a>     
+        </div>
+        <div class="col-md-4" *ngIf="productsIds.length > 0 ;then enablebutton;else disablebutton"></div>
+
+        <div class="col-md-4">
+          <ng-template #disablebutton>
+            <button type="submit" style="display: inline"  disabled class="btn mybtn">Next</button>
+          </ng-template>
+          <ng-template #enablebutton>
+            <button type="submit" class="btn mybtn ml-auto">Next</button>
+          </ng-template>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="card mb-3" style="max-width: 540px;" *ngFor="let item of products">
           <div class="row">
-              <img src="{{baseUrl+''+item.pictureUrl}}" style="width: 300px;height: 300px;" class="img-fluid rounded-start" alt="...">
+            <img id="checked" (click)="CheckBoxMethod(item.id)" src="{{baseUrl+''+item.pictureUrl}}"
+              style="width: 300px;height: 300px;" class="img-fluid rounded-start" alt="...">
             <br>
-              <div class="card-body">
-                <h5 class="card-title">{{item.name}}</h5>
-                <p class="card-text">{{item.description}}</p>
-                <input type="checkbox" name="isActive"(change)="CheckBoxMethod(item.id)">
-                <h5 class="card-title">{{item.price}}$</h5>
+            <div class="card-body">
+              <h5 class="card-title">{{item.name}}</h5>
+              <p class="card-text">{{item.description}}</p>
+              <input type="checkbox" id="item.isActive" [checked]="item.isActive" name="item.isActive"
+                (change)="CheckBoxMethod(item.id)">
+              <h5 class="card-title">{{item.price}}$</h5>
 
-              </div>
+            </div>
           </div>
         </div>
-  </div>
-  </div>
-    <div class="container text-center">
-        <div *ngIf="productsIds.length > 0 ;then enablebutton;else disablebutton"></div>
-        <ng-template #disablebutton>
-            <button type="submit" disabled class="btn mybtn">Next</button>
-        </ng-template>
-        <ng-template #enablebutton>
-            <button type="submit" class="btn mybtn">Next</button>
-        </ng-template>
+      </div>
     </div>
-</form>
+
+
+
+
+  </form>
+
+</ng-template>
+<ng-template #noProductFound>
+  <div style="text-align:center">
+    <img src="../../assets/no_product_found.png" width="700" height="700">
+  </div>
+
+  <div class="container">
+    <a [routerLink]="['/restaurants']" class="btn mybtn">Back</a>
+  </div>
+</ng-template>

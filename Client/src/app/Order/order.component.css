@@ -2,3 +2,17 @@
     background-color: #f1b500;
      color: black;
 }
+
+.addOrEditBtn{
+
+    background-color: #f1b500;
+     color: black;
+     margin: 7px;
+
+}
+
+#Qty{
+    width: 50px;
+    height: 49px;
+    text-align: center;
+}
