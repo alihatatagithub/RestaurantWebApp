@@ -39,6 +39,12 @@ export class RestaurantComponent implements OnInit {
                     console.log(error);
                   })
 
+
+    localStorage.setItem('email','');
+    localStorage.setItem('name','');
+    localStorage.setItem('phone','');
+    localStorage.setItem('address','');
+
     this.GetCities();
   }
 

@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        Order Completed Succesfully
+      </div>
+</div>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <i class="fal fa-user"></i>
+            <span> Name</span> <br>
+            {{name}}
+           
+        </div>
+    
+        <div class="col-md-3">
+            <i class="far fa-phone-alt"></i>
+            <span> Phone</span> <br>
+            {{phone}}
+        </div>
+    
+        <div class="col-md-3">
+            <i class="far fa-envelope"></i>
+            <span> Email</span> <br>
+            {{email}}
+        </div>
+    
+        <div class="col-md-3">
+            <i class="fas fa-map-marker-alt"></i>
+            <span> Address</span> <br>
+            {{address}}
+        </div>
+    </div>
+
+    <br>
+    <h4 class="text-center">The Order With Be Delivered Within 15 Minutes</h4>
+    <br>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Order Id</th>
+            <th>Total</th>
+            <th>Created Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  >
+           
+            <td>{{orderCompletedvm.id}}</td>
+            <td>{{orderCompletedvm.total}}</td>
+            <td>{{orderCompletedvm.createdDate}}</td>
+            
+      
+          </tr>
+         
+        </tbody>
+      </table>

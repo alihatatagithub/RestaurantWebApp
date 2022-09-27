@@ -6,3 +6,15 @@
 #checked:hover{
     cursor: pointer;
 }
+
+#backBtn{
+    width: 70px;
+    margin-right: 487px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#nextBtn{
+    width: 70px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

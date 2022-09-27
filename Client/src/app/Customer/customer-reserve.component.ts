@@ -19,6 +19,7 @@ export class CustomerReserveComponent implements OnInit {
   baseUrl :string = environment.BaseUrl;
   productIds:number[] = [];
   phonePattern:any;
+  emailPattern:string='';
   customerForm:any;
   products:IProduct[] = [];
   // productId:number =0;
@@ -70,7 +71,8 @@ export class CustomerReserveComponent implements OnInit {
    
   }
   BackMethod(){
-    this.router.navigateByUrl('/restaurantdetail/'+localStorage.getItem('rest_id'));
+    localStorage.setItem('backFromCustomerReserve','true');
+    this.router.navigateByUrl('/restaurantdetail/'+localStorage.getItem('rest_id')+'/'+1);
   }
 
 }

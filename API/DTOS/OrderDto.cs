@@ -9,11 +9,18 @@ namespace API.DTOS
         public string Phone { get; set; }
         public string Address { get; set; }
 
-        public List<int> ProductIds { get; set; }
+        public ICollection<ProductVM> ProductVM { get; set; }
 
         public OrderDto()
         {
-            ProductIds = new List<int>();
+            ProductVM = new HashSet<ProductVM>();
         }
     }
+
+    public class ProductVM
+    {
+        public int ProductId { get; set; }
+        public int ProductQty { get; set; }
+    }
+
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CustomerReserveComponent } from './Customer/customer-reserve.component';
 import { AuthGuard } from './guards/auth-guard.service';
 import { LoginComponent } from './login/login.component';
+import { OrderCompletedComponent } from './Order/order-completed.component';
 import { OrderComponent } from './Order/order.component';
 import { ProductsComponent } from './product/product.component';
 import { RestaurantComponent } from './Restaurant/restaurant.component';
@@ -14,8 +15,10 @@ const routes: Routes = [
   {path:'restaurants',component:RestaurantComponent},
   {path:'',component:RestaurantComponent},
   {path:'restaurantdetail/:id',component:RestaurantdetailComponent},
+  {path:'restaurantdetail/:id/:isback',component:RestaurantdetailComponent},
   {path:'customerreserve',component:CustomerReserveComponent},
   {path:'order',component:OrderComponent},
+  {path:'ordercompleted',component:OrderCompletedComponent},
 
 ];
 

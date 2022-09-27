@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IRestaurant } from '../Shared/Models/Restaurant';
 import { environment } from '../../environments/environment';
+import { IProduct } from '../Shared/Models/product';
 
 
 @Injectable({
@@ -21,6 +22,6 @@ export class RestaurantApiService {
     }
 
     GetProductsByRestaurantId(id:number){
-      return this.http.get(this.baseUrl+'api/products/restaurant/'+id);
+      return this.http.get<IProduct[]>(this.baseUrl+'api/products/restaurant/'+id);
     }
 }

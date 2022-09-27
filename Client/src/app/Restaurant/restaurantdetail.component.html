@@ -6,20 +6,15 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
-
-          <a [routerLink]="['/restaurants']" class="btn mybtn d-inline">Back</a>     
-        </div>
+          <a id="backBtn" [routerLink]="['/restaurants']" class="col-md-4 btn mybtn ">Back</a>     
         <div class="col-md-4" *ngIf="productsIds.length > 0 ;then enablebutton;else disablebutton"></div>
 
-        <div class="col-md-4">
           <ng-template #disablebutton>
-            <button type="submit" style="display: inline"  disabled class="btn mybtn">Next</button>
+            <button type="submit" id="nextBtn"  disabled class="col-md-4 btn mybtn">Next</button>
           </ng-template>
           <ng-template #enablebutton>
-            <button type="submit" class="btn mybtn ml-auto">Next</button>
+            <button type="submit" id="nextBtn" class="btn mybtn ">Next</button>
           </ng-template>
-        </div>
 
       </div>
     </div>
@@ -37,9 +32,10 @@
               <input type="checkbox" id="item.isActive" [checked]="item.isActive" name="item.isActive"
                 (change)="CheckBoxMethod(item.id)">
               <h5 class="card-title">{{item.price}}$</h5>
-
+        
             </div>
           </div>
+          
         </div>
       </div>
     </div>

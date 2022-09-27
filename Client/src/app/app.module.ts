@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { ProductsComponent } from './product/product.component';
 import { AuthGuard } from './guards/auth-guard.service';
 import { JwtModule } from '@auth0/angular-jwt';
+import { OrderCompletedComponent } from './Order/order-completed.component';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -25,7 +26,9 @@ export function tokenGetter() {
     CustomerReserveComponent,
     OrderComponent,
     LoginComponent,
-    ProductsComponent
+    ProductsComponent,
+    OrderCompletedComponent,
+    
   ],
   imports: [
     BrowserModule,

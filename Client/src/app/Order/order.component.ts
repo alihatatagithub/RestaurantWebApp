@@ -8,6 +8,7 @@ import { RestaurantApiService } from '../Restaurant/restaurant-api.service';
 import { ICustomer } from '../Shared/Models/customer';
 import { IProduct } from '../Shared/Models/product';
 import { OrderVM } from '../Shared/ViewModels/OrderVM';
+import { ProductVM } from '../Shared/ViewModels/ProductVM';
 
 @Component({
   selector: 'app-order',
@@ -29,6 +30,7 @@ export class OrderComponent implements OnInit {
   product:any;
   allTotal:number=0;
   products:IProduct[] = [];
+  productvm:any;
   total:number[] = [];
   baseUrl = environment.BaseUrl;
   constructor(private service:MenueApiService,private http:HttpClient,private router:Router) { }
@@ -67,16 +69,20 @@ export class OrderComponent implements OnInit {
     this.order.address = this.address;
     this.order.phone = this.phone;
     for (let index = 0; index < this.products.length; index++) {
-      this.order.productIds.push(this.products[index].id);
+      // this.order.productIds.push(this.products[index].id);
+      this.productvm = new ProductVM();
+      this.productvm.productId = this.products[index].id;
+      this.productvm.productQty = this.products[index].Qty;
+      this.order.ProductVM.push(this.productvm);
       
     }
     this.http.post(this.baseUrl+'api/orders',this.order).subscribe(a => {
       console.log("Success");
-      localStorage.setItem('email','');
-   localStorage.setItem('name','');
-   localStorage.setItem('phone','');
-   localStorage.setItem('address','');
-      this.router.navigateByUrl('/restaurants');
+  //     localStorage.setItem('email','');
+  //  localStorage.setItem('name','');
+  //  localStorage.setItem('phone','');
+  //  localStorage.setItem('address','');
+      this.router.navigateByUrl('/ordercompleted');
 
     },error => {
       console.log("Error"+error);
